@@ -1,0 +1,40 @@
+@import "./App.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+	margin: 0;
+	font-family: "Roboto" Arial !important;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	background-color: #131215;
+}
+
+/* Styles for the vertical scrollbar */
+:root::-webkit-scrollbar {
+	width: 6px;
+}
+
+:root::-webkit-scrollbar-thumb {
+	background-color: #2e2d2f;
+	border-radius: 4px;
+}
+
+:root::-webkit-scrollbar-track {
+	background-color: transparent;
+}
+
+/* Styles for the horizontal scrollbar */
+.scrollbar-container::-webkit-scrollbar {
+	height: 10px;
+}
+
+.scrollbar-container::-webkit-scrollbar-thumb {
+	background-color: #2e2d2f;
+	border-radius: 4px;
+}
+
+.scrollbar-container::-webkit-scrollbar-track {
+	background-color: transparent;
+}
