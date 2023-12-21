@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { ForecastWeatherItem } from "./ForecastWeatherItem";
+import ForecastWeatherItem from "./ForecastWeatherItem";
 
 const WEEK_DAYS = [
 	"Monday",
@@ -11,7 +11,7 @@ const WEEK_DAYS = [
 	"Sunday",
 ];
 
-export function ForecastWeather({ data }) {
+const ForecastWeather = ({ data }) => {
 	const currentDay = new Date().getDay();
 
 	const forecastDays = WEEK_DAYS.slice(currentDay)
@@ -34,7 +34,9 @@ export function ForecastWeather({ data }) {
 			</div>
 		</div>
 	);
-}
+};
+
+export default ForecastWeather;
 
 ForecastWeather.propTypes = {
 	data: PropTypes.shape({

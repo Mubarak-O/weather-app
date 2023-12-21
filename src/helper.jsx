@@ -17,7 +17,7 @@ const weatherIcons = {
 	thunderstorm: <FaBolt />,
 };
 
-const getWeatherIcon = (weatherDescription, options = {}) => {
+export function getWeatherIcon(weatherDescription, options = {}) {
 	const { size = 125, className = "" } = options;
 	const selectedIcon = weatherIcons[weatherDescription.toLowerCase()] || (
 		<FaCloud />
@@ -26,6 +26,10 @@ const getWeatherIcon = (weatherDescription, options = {}) => {
 		size,
 		className: className,
 	});
-};
+}
 
-export default getWeatherIcon;
+export function titleCase(str) {
+	return str
+		.toLowerCase()
+		.replace(/(^|\s)\S/g, (firstLetter) => firstLetter.toUpperCase());
+}

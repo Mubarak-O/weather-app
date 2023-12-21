@@ -3,9 +3,9 @@ import { FaWind } from "react-icons/fa6";
 import { FaPercent } from "react-icons/fa6";
 import { FaCloud } from "react-icons/fa6";
 import { FaDroplet } from "react-icons/fa6";
-import getWeatherIcon from "../helper";
+import { getWeatherIcon } from "../helper";
 
-export function ForecastWeatherItem({ data, date }) {
+const ForecastWeatherItem = ({ data, date }) => {
 	const weatherIcon = getWeatherIcon(data.weather[0].main, {
 		size: 65,
 		className: `fill-white`,
@@ -49,7 +49,9 @@ export function ForecastWeatherItem({ data, date }) {
 			</div>
 		</div>
 	);
-}
+};
+
+export default ForecastWeatherItem;
 
 ForecastWeatherItem.propTypes = {
 	data: PropTypes.shape({

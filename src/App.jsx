@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Search from "./components/search/search";
-import { CurrentWeather } from "./components/CurrentWeather";
-import { ForecastWeather } from "./components/ForecastWeather";
+import CurrentWeather from "./components/CurrentWeather";
+import ForecastWeather from "./components/ForecastWeather";
 import { FaLocationDot } from "react-icons/fa6";
 import { MdSunny } from "react-icons/md";
 import { FaSearch } from "react-icons/fa";

@@ -5,9 +5,9 @@ import { FaDroplet } from "react-icons/fa6";
 import { FaGaugeHigh } from "react-icons/fa6";
 import { FaCalendarDay } from "react-icons/fa6";
 import { format } from "date-fns";
-import getWeatherIcon from "../helper";
+import { getWeatherIcon, titleCase } from "../helper";
 
-export function CurrentWeather({ data }) {
+const CurrentWeather = ({ data }) => {
 	// Styling for the main left hand side weather component
 	const mainIconStyle = `absolute top-[60%] left-[75%] transform -translate-x-1/2 -translate-y-1/2 fill-white`;
 	const mainIcon = getWeatherIcon(data.weather[0].main, {
@@ -22,12 +22,6 @@ export function CurrentWeather({ data }) {
 	const gridIconSize = 35;
 	const gridTitleStyle = "text-md text-[#7C7C7E] font-kanit pt-1.5";
 	const gridInfoTextStyle = "text-white text-md font-kanit";
-
-	function titleCase(str) {
-		return str
-			.toLowerCase()
-			.replace(/(^|\s)\S/g, (firstLetter) => firstLetter.toUpperCase());
-	}
 
 	const date = new Date();
 	const formattedDate = format(date, "EEEE do MMM");
@@ -98,7 +92,9 @@ export function CurrentWeather({ data }) {
 			</div>
 		</div>
 	);
-}
+};
+
+export default CurrentWeather;
 
 CurrentWeather.propTypes = {
 	data: PropTypes.shape({
