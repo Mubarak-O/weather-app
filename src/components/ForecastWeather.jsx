@@ -12,7 +12,6 @@ const WEEK_DAYS = [
 ];
 
 export function ForecastWeather({ data }) {
-	console.log(data);
 	const currentDay = new Date().getDay();
 
 	const forecastDays = WEEK_DAYS.slice(currentDay)
