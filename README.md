@@ -70,7 +70,7 @@ Follow these steps to set up and run the project:
    `git clone https://github.com/Mubarak-O/weather-app.git`
 2. **Install Dependencies:**\
    `npm install`
-3. **Set Up Environment Variables:**\
+3. **Set Up Environment Variables:**
     - Create a `.env` file in the root directory.
     - Add the following lines to the `.env` file, replacing `YOUR_OPENWEATHERMAP_API_KEY` and `YOUR_RAPIDAPI_KEY` with your actual API keys:
     ```
@@ -78,5 +78,5 @@ Follow these steps to set up and run the project:
     VITE_WEATHER_API_KEY=YOUR_OPENWEATHERMAP_API_KEY
     ```
 4. **Run the Application:**\
-   `npm run dev`\
-   The Weather IO web applications should be accessbile at `http://localhost:5173` in your browser
+   Spin up the development server by running: `npm run dev`.
+   The Weather IO web applications should be accessbile at `http://localhost:5173` in your browser.
