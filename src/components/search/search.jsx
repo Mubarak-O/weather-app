@@ -49,6 +49,7 @@ const Search = ({ onSearchChange }) => {
 			...provided,
 			color: "white",
 			padding: "0 30px 0 30px", // spacing of text caret
+			fontSize: "22px",
 		}),
 		option: (provided, state) => ({
 			...provided,
@@ -64,6 +65,7 @@ const Search = ({ onSearchChange }) => {
 		placeholder: (provided) => ({
 			...provided,
 			paddingLeft: "30px", // spacing of placeholder text
+			fontSize: "22px",
 		}),
 	};
 
