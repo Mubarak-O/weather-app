@@ -5,7 +5,7 @@ import { FaDroplet } from "react-icons/fa6";
 import { FaGaugeHigh } from "react-icons/fa6";
 import { FaCalendarDay } from "react-icons/fa6";
 import { format } from "date-fns";
-import { getWeatherIcon, titleCase } from "../helper";
+import { getWeatherIcon, titleCase } from "../utils/utility";
 
 const CurrentWeather = ({ data }) => {
 	// Styling for the main left hand side weather component
