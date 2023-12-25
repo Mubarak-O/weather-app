@@ -43,7 +43,7 @@ Weather IO is your go-to source for accurate and real time weather information. 
 
     -   Offers real time suggestions of cities based on user input in the search bar. Enhances the user experience by providing dynamic and accurate city suggestions as users type.
 
--   **[Reverese Geocoding & Geolocation API](https://rapidapi.com/Noggle/api/reverse-geocoding-and-geolocation-service/)**
+-   **[Reverse Geocoding & Geolocation API](https://rapidapi.com/Noggle/api/reverse-geocoding-and-geolocation-service/)**
     -   Translates geographical coordinates into a human-readable address. Used to determine the user's location when the _"Current Location"_ button is clicked.
 
 ## Getting Setup
@@ -60,7 +60,7 @@ Before running the Weather IO Web application, make sure you follow the instruct
     -   **[OpenWeatherMap API Key](https://home.openweathermap.org/)**
         -   Sign up and obtain your API key for weather data at the following link: [API Key](https://home.openweathermap.org/api_keys).
     -   **[RapidAPI Key](https://rapidapi.com/hub)**
-        -   Sign up and obtain a RapidAPI key for accessing the GEeoDB Cities and Reverese Geocoding & Geolocation APIs.
+        -   Sign up and obtain a RapidAPI key for accessing the GeoDB Cities and Reverse Geocoding & Geolocation APIs.
 
 ### Installation
 
