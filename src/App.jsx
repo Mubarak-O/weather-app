@@ -5,60 +5,34 @@ import ForecastWeather from "./components/ForecastWeather";
 import { FaLocationDot } from "react-icons/fa6";
 import { MdSunny } from "react-icons/md";
 import { FaSearch } from "react-icons/fa";
-import { WEATHER_API_URL } from "./api";
-import { REV_GEO_API_URL, revGeoApiOptions } from "./api";
+import { fetchWeatherDetails, fetchCityData } from "./api/api";
 
 function App() {
 	const [currentWeather, setCurrentWeather] = useState(null);
 	const [forecastWeather, setForecastWeather] = useState(null);
 
-	const handleOnSearchChange = (searchData) => {
+	const handleOnSearchChange = async (searchData) => {
 		const [lat, lon] = searchData.value.split(" ");
 		const units = "metric";
 
-		const WEATHER_API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
+		const weatherData = await fetchWeatherDetails(lat, lon, units);
 
-		const currentWeatherFetch = fetch(
-			`${WEATHER_API_URL}/weather?lat=${lat}&lon=${lon}&units=${units}&appid=${WEATHER_API_KEY}`
-		);
+		setCurrentWeather({
+			location: searchData.label,
+			...weatherData.currentWeather,
+		});
 
-		const forecastWeatherFetch = fetch(
-			`${WEATHER_API_URL}/forecast?lat=${lat}&lon=${lon}&units=${units}&appid=${WEATHER_API_KEY}`
-		);
-
-		Promise.all([currentWeatherFetch, forecastWeatherFetch])
-			.then(async (response) => {
-				const weatherResponse = await response[0].json();
-				const forecastResponse = await response[1].json();
-
-				setCurrentWeather({
-					location: searchData.label,
-					...weatherResponse,
-				});
-				setForecastWeather({
-					location: searchData.label,
-					...forecastResponse,
-				});
-			})
-			.catch((err) => console.log(err));
-	};
-
-	const fetchCity = async (lat, lon) => {
-		const response = await fetch(
-			`${REV_GEO_API_URL}latitude=${lat}&longitude=${lon}&range=50000`,
-			revGeoApiOptions
-		);
-		const data = await response.json();
-		const city = data[0].City;
-		const countryCode = data[0].CountryId;
-		return { city, countryCode };
+		setForecastWeather({
+			location: searchData.label,
+			...weatherData.forecastWeather,
+		});
 	};
 
 	const handleLocateMe = async () => {
 		if (navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition(async (position) => {
 				const { latitude, longitude } = position.coords;
-				const { city, countryCode } = await fetchCity(
+				const { city, countryCode } = await fetchCityData(
 					latitude,
 					longitude
 				);
