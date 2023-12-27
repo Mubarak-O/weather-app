@@ -2,18 +2,23 @@ import { useState } from "react";
 import Search from "./components/search/search";
 import CurrentWeather from "./components/CurrentWeather";
 import ForecastWeather from "./components/ForecastWeather";
+import CurrentWeatherSkeleton from "./components/CurrentWeatherSkeleton";
+import ForecastWeatherSkeleton from "./components/ForecastWeatherSkeleton";
 import { FaLocationDot } from "react-icons/fa6";
 import { MdSunny } from "react-icons/md";
 import { FaSearch } from "react-icons/fa";
 import { fetchWeatherDetails, fetchCityData } from "./api/api";
 
 function App() {
+	const [isLoading, setIsLoading] = useState(false);
 	const [currentWeather, setCurrentWeather] = useState(null);
 	const [forecastWeather, setForecastWeather] = useState(null);
 
 	const handleOnSearchChange = async (searchData) => {
 		const [lat, lon] = searchData.value.split(" ");
 		const units = "metric";
+
+		setIsLoading(true);
 
 		const weatherData = await fetchWeatherDetails(lat, lon, units);
 
@@ -26,6 +31,10 @@ function App() {
 			location: searchData.label,
 			...weatherData.forecastWeather,
 		});
+
+		await new Promise((resolve) => setTimeout(resolve, 1000));
+
+		setIsLoading(false);
 	};
 
 	const handleLocateMe = async () => {
@@ -74,8 +83,20 @@ function App() {
 				</button>
 			</div>
 			<div>
-				{currentWeather && <CurrentWeather data={currentWeather} />}
-				{forecastWeather && <ForecastWeather data={forecastWeather} />}
+				{isLoading ? (
+					<>
+						<CurrentWeatherSkeleton />
+						<ForecastWeatherSkeleton />
+					</>
+				) : (
+					currentWeather &&
+					forecastWeather && (
+						<>
+							<CurrentWeather data={currentWeather} />
+							<ForecastWeather data={forecastWeather} />
+						</>
+					)
+				)}
 			</div>
 		</>
 	);
