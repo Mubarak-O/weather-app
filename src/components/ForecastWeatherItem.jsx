@@ -24,7 +24,7 @@ const ForecastWeatherItem = ({ data, date }) => {
 			<div className="flex flex-col items-start p-0.5 space-y-0.5">
 				<div className="flex flex-row items-center space-x-2">
 					<FaWind size={20} className={`${gray}`} />
-					<p className="pl-0.5 text-md text-gray-300/90  font-saira">
+					<p className="text-md text-gray-300/90  font-saira">
 						{Math.round(data.wind.speed * 10) / 10}m/s
 					</p>
 				</div>
