@@ -25,7 +25,12 @@ Weather IO is your go-to source for accurate and real time weather information. 
     -   A react-select wrapper with built-in support for asynchronous data fetching and pagination. Used for handling asynchronous loading of location suggestions in the search bar.
 
 -   **[prop-types](https://www.npmjs.com/package/prop-types)**
+
     -   Runtime type checking for React props. Ensures the correctness of data passed to components.
+
+-   **[react-loading-skeleton](https://www.npmjs.com/package/react-loading-skeleton)**
+
+    -   A lightweight React library for creating skeleton loading animations. Provides users with a visual indication of when content is being loaded during data fetching.
 
 ## APIs Used
 
