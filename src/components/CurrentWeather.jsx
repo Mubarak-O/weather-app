@@ -1,3 +1,4 @@
+import React from "react";
 import PropTypes from "prop-types";
 import { FaWind } from "react-icons/fa6";
 import { FaThermometerHalf } from "react-icons/fa";
@@ -15,8 +16,31 @@ const CurrentWeather = ({ data }) => {
 		className: mainIconStyle,
 	});
 
+	const gridData = [
+		{
+			icon: FaThermometerHalf,
+			title: "Feels Like",
+			value: `${Math.round(data.main.feels_like)}°C`,
+		},
+		{
+			icon: FaDroplet,
+			title: "Humidity",
+			value: `${data.main.humidity}%`,
+		},
+		{
+			icon: FaWind,
+			title: "Wind",
+			value: `${Math.round(data.wind.speed * 10) / 10} m/s`,
+		},
+		{
+			icon: FaGaugeHigh,
+			title: "Pressure",
+			value: `${data.main.pressure} hPa`,
+		},
+	];
+
 	// Styling for all of the grid items in 2x2 format
-	const gridStlye =
+	const gridStyle =
 		"bg-[#1A191C] rounded-2xl flex flex-col justify-center items-center";
 	const gridIconStyle = "fill-white";
 	const gridIconSize = 35;
@@ -45,49 +69,22 @@ const CurrentWeather = ({ data }) => {
 					<p className="text-5xl text-white py-3 font-cutive">
 						{Math.round(data.main.temp)}&deg;C
 					</p>
-					<p className=" text-white text-lg font-cutive max-w-[200px]">
+					<p className="text-white text-lg font-cutive max-w-[200px]">
 						{titleCase(data.weather[0].description)}
 					</p>
 					{mainIcon}
 				</div>
-				<div className="w-1/2 mb-4 mr-4 grid grid-cols-2 grid-rows-2 gap-4 ">
-					<div className={gridStlye}>
-						<FaThermometerHalf
-							size={gridIconSize}
-							className={gridIconStyle}
-						/>
-						<p className={gridTitleStyle}>Feels Like</p>
-						<p className={gridInfoTextStyle}>
-							{Math.round(data.main.feels_like)}&deg;C
-						</p>
-					</div>
-					<div className={gridStlye}>
-						<FaDroplet
-							size={gridIconSize}
-							className={gridIconStyle}
-						/>
-						<p className={gridTitleStyle}>Humidity</p>
-						<p className={gridInfoTextStyle}>
-							{data.main.humidity}%
-						</p>
-					</div>
-					<div className={gridStlye}>
-						<FaWind size={gridIconSize} className={gridIconStyle} />
-						<p className={gridTitleStyle}>Wind</p>
-						<p className={gridInfoTextStyle}>
-							{Math.round(data.wind.speed * 10) / 10} m/s
-						</p>
-					</div>
-					<div className={gridStlye}>
-						<FaGaugeHigh
-							size={gridIconSize}
-							className={gridIconStyle}
-						/>
-						<p className={gridTitleStyle}>Pressure</p>
-						<p className={gridInfoTextStyle}>
-							{data.main.pressure} hPa
-						</p>
-					</div>
+				<div className="w-1/2 mb-4 mr-4 grid grid-cols-2 grid-rows-2 gap-4">
+					{gridData.map((item, index) => (
+						<div key={index} className={gridStyle}>
+							{React.createElement(item.icon, {
+								size: gridIconSize,
+								className: gridIconStyle,
+							})}
+							<p className={gridTitleStyle}>{item.title}</p>
+							<p className={gridInfoTextStyle}>{item.value}</p>
+						</div>
+					))}
 				</div>
 			</div>
 		</div>
