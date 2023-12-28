@@ -2,8 +2,8 @@ import { useState } from "react";
 import Search from "./components/search/search";
 import CurrentWeather from "./components/CurrentWeather";
 import ForecastWeather from "./components/ForecastWeather";
-import CurrentWeatherSkeleton from "./components/CurrentWeatherSkeleton";
-import ForecastWeatherSkeleton from "./components/ForecastWeatherSkeleton";
+import CurrentWeatherSkeleton from "./components/skeletons/CurrentWeatherSkeleton";
+import ForecastWeatherSkeleton from "./components/skeletons/ForecastWeatherSkeleton";
 import { FaLocationDot } from "react-icons/fa6";
 import { MdSunny } from "react-icons/md";
 import { FaSearch } from "react-icons/fa";
@@ -32,6 +32,8 @@ function App() {
 			...weatherData.forecastWeather,
 		});
 
+		// Simulate a delay for skeleton loading
+		// This delay allows time for skeleton components to render
 		await new Promise((resolve) => setTimeout(resolve, 1000));
 
 		setIsLoading(false);
