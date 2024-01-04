@@ -51,15 +51,24 @@ const CurrentWeather = ({ data }) => {
 	const formattedDate = format(date, "EEEE do MMM");
 
 	return (
-		<div className="container flex flex-col max-w-4xl mx-auto my-10 bg-[#1C1C1E] rounded-2xl p-3">
+		<div
+			data-cy="current-weather"
+			className="container flex flex-col max-w-4xl mx-auto my-10 bg-[#1C1C1E] rounded-2xl p-3"
+		>
 			<h2 className="my-2 ml-4 font-saira text-white text-2xl">
 				Current Weather
 			</h2>
 			<div className="flex gap-8">
-				<div className="w-1/2 mb-4 ml-4 bg-[#1A191C] rounded-2xl relative p-8">
+				<div
+					data-cy="current-weather-main"
+					className="w-1/2 mb-4 ml-4 bg-[#1A191C] rounded-2xl relative p-8"
+				>
 					<div className="flex items-center pb-3">
 						<FaCalendarDay className="fill-[#a1a1a1]" size={20} />
-						<p className="pl-2 text-[#a1a1a1] font-saira text-lg">
+						<p
+							data-cy="date"
+							className="pl-2 text-[#a1a1a1] font-saira text-lg"
+						>
 							{formattedDate}
 						</p>
 					</div>
@@ -74,7 +83,10 @@ const CurrentWeather = ({ data }) => {
 					</p>
 					{mainIcon}
 				</div>
-				<div className="w-1/2 mb-4 mr-4 grid grid-cols-2 grid-rows-2 gap-4">
+				<div
+					data-cy="current-weather-grid"
+					className="w-1/2 mb-4 mr-4 grid grid-cols-2 grid-rows-2 gap-4"
+				>
 					{gridData.map((item, index) => (
 						<div key={index} className={gridStyle}>
 							{React.createElement(item.icon, {

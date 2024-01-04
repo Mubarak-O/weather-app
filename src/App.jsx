@@ -67,7 +67,7 @@ function App() {
 						WeatherIO
 					</h1>
 				</header>
-				<div className="grow px-8 relative">
+				<div data-cy="search-bar" className="grow px-8 relative">
 					<Search onSearchChange={handleOnSearchChange} />
 					<FaSearch
 						className="absolute top-1/2 left-[11%] transform -translate-x-1/2 -translate-y-1/2 fill-white"
@@ -75,6 +75,7 @@ function App() {
 					/>
 				</div>
 				<button
+					data-cy="locate-button"
 					onClick={handleLocateMe}
 					className="flex bg-[#7aa8b8] text-lg rounded-3xl py-2 px-4 items-center mx-2"
 				>

@@ -12,19 +12,29 @@ const ForecastWeatherItem = ({ data, date }) => {
 	});
 
 	const gray = "fill-[#848484]";
+	const weatherInfoStyle = "text-md text-gray-300/90 font-saira";
 	return (
-		<div className="flex flex-col flex-shrink-0 w-[130px] items-center bg-[#1A191C] rounded-2xl p-4 space-y-3">
-			<div className="flex flex-col items-center space-y-1 ">
-				<h2 className="text-[#A1A1A1] text-3xl font-saira">{date}</h2>
+		<div
+			data-cy="forecast-weather-card"
+			className="flex flex-col flex-shrink-0 w-[130px] items-center bg-[#1A191C] rounded-2xl p-4 space-y-3"
+		>
+			<div
+				data-cy="fw-main"
+				className="flex flex-col items-center space-y-1 "
+			>
+				<p className="text-[#A1A1A1] text-3xl font-saira">{date}</p>
 				{weatherIcon}
 				<p className="text-white text-2xl font-saira">
 					{Math.round(data.main.temp)}&deg;C
 				</p>
 			</div>
-			<div className="flex flex-col items-start p-0.5 space-y-0.5">
+			<div
+				data-cy="fw-extra"
+				className="flex flex-col items-start p-0.5 space-y-0.5"
+			>
 				<div className="flex flex-row items-center space-x-2">
 					<FaWind size={20} className={`${gray}`} />
-					<p className="text-md text-gray-300/90  font-saira">
+					<p className={weatherInfoStyle}>
 						{Math.round(data.wind.speed * 10) / 10}m/s
 					</p>
 				</div>
@@ -36,15 +46,11 @@ const ForecastWeatherItem = ({ data, date }) => {
 							size={10}
 						/>
 					</div>
-					<p className="text-md text-gray-300/90  font-saira">
-						{data.clouds.all}%
-					</p>
+					<p className={weatherInfoStyle}>{data.clouds.all}%</p>
 				</div>
 				<div className="flex flex-row items-center space-x-4">
 					<FaDroplet size={20} className={`${gray}`} />
-					<p className="text-md text-gray-300/90 font-saira">
-						{data.main.humidity}%
-					</p>
+					<p className={weatherInfoStyle}>{data.main.humidity}%</p>
 				</div>
 			</div>
 		</div>
