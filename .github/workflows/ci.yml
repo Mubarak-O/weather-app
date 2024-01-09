@@ -1,5 +1,6 @@
 name: End-to-end tests
-on: push
+on:
+    workflow_dispatch:
 jobs:
     cypress-run:
         runs-on: ubuntu-22.04
@@ -11,12 +12,6 @@ jobs:
         steps:
             - name: Checkout
               uses: actions/checkout@v4
-            # Install npm dependencies, cache them correctly
-            # and run all Cypress tests
-            - name: Node Version
-              uses: actions/setup-node@v4
-              with:
-                  node-version: 20.8.1
             - name: Debug Environment
               run: |
                   echo "Node.js version: $(node -v)"
@@ -27,3 +22,13 @@ jobs:
               with:
                   start: npm run dev
                   wait-on: "http://localhost:5173/"
+            - uses: actions/upload-artifact@v4
+              if: failure()
+              with:
+                  name: cypress-screenshots
+                  path: cypress/secreenshots
+            - uses: actions/upload-artifact@v4
+              if: always()
+              with:
+                  name: cypress-videos
+                  path: cypress/videos
