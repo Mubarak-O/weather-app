@@ -3,15 +3,27 @@ on: push
 jobs:
     cypress-run:
         runs-on: ubuntu-22.04
+        container:
+            image: cypress/included:latest
         env:
-            VITE_GEO_API_KEY: ${{ secrets.VITE_GEO_API_KEY}}
-            VITE_WEATHER_API_KEY: ${{ secrets.VITE_WEATHER_API_KEY}}
+            VITE_GEO_API_KEY: ${{ secrets.VITE_GEO_API_KEY }}
+            VITE_WEATHER_API_KEY: ${{ secrets.VITE_WEATHER_API_KEY }}
         steps:
             - name: Checkout
               uses: actions/checkout@v4
             # Install npm dependencies, cache them correctly
             # and run all Cypress tests
-            - name: Cypress run
+            - name: Node Version
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20.8.1
+            - name: Debug Environment
+              run: |
+                  echo "Node.js version: $(node -v)"
+                  echo "npm version: $(npm -v)"
+                  echo "Cypress version: $(npx cypress --version)"
+            - name: Cypress Run
               uses: cypress-io/github-action@v6
               with:
                   start: npm run dev
+                  wait-on: "http://localhost:5173/"
