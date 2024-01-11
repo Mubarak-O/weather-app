@@ -8,7 +8,7 @@ describe("WeatherIO Tests", () => {
 		cy.wait(5000);
 
 		cy.get('[data-cy="search-bar"]').as("searchBar");
-		cy.get("@searchBar").click().wait(2000).type("Dub");
+		cy.get("@searchBar").click().wait(5000).type("Dub");
 
 		cy.get('[id$="listbox"]').as("dropdownMenu");
 		cy.get("@dropdownMenu").contains("Dublin").click();
@@ -16,7 +16,7 @@ describe("WeatherIO Tests", () => {
 	it("Testing the search functionality of the Search component", () => {
 		cy.get('[data-cy="search-bar"]').as("searchBar");
 		cy.get("@searchBar").should("exist");
-		cy.get("@searchBar").click().wait(2000).type("Abu");
+		cy.get("@searchBar").click().wait(5000).type("Abu");
 
 		cy.get('[id$="listbox"]').as("dropdownMenu");
 		cy.get("@dropdownMenu")
