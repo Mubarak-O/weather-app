@@ -23,6 +23,8 @@ jobs:
             - name: Cypress Run
               uses: cypress-io/github-action@v6
               with:
+                  headed: true
+                  browser: chrome
                   start: npm run dev
                   wait-on: "http://localhost:5173/"
             - uses: actions/upload-artifact@v4
