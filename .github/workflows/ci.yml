@@ -17,6 +17,9 @@ jobs:
                   echo "Node.js version: $(node -v)"
                   echo "npm version: $(npm -v)"
                   echo "Cypress version: $(npx cypress --version)"
+                  echo "Secret Keys:"
+                  echo "GEO_API_KEY: ${VITE_GEO_API_KEY}"
+                  echo "WEATHER_API_KEY: ${VITE_WEATHER_API_KEY}"
             - name: Cypress Run
               uses: cypress-io/github-action@v6
               with:
@@ -26,7 +29,7 @@ jobs:
               if: failure()
               with:
                   name: cypress-screenshots
-                  path: cypress/secreenshots
+                  path: cypress/screenshots
             - uses: actions/upload-artifact@v4
               if: always()
               with:
