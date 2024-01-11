@@ -32,6 +32,10 @@ Weather IO is your go-to source for accurate and real time weather information. 
 
     -   A lightweight React library for creating skeleton loading animations. Provides users with a visual indication of when content is being loaded during data fetching.
 
+-   **[cypress](https://www.cypress.io/)**
+
+    -   A JavaScript end-to-end testing framework. Cypress is employed for automating and testing the user interactions within the web application. It allows for robust and reliable testing of the application's features and functionality.
+
 ## APIs Used
 
 -   **[OpenWeatherMap API](https://openweathermap.org/api)**
